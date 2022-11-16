@@ -1,0 +1,110 @@
+<!-- <h1>iHikerz</h1> 
+<h2>Permit Application</h2>
+<form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="" ><br>
+    <label for="ic">IC/ Passport no.:</label>
+    <input type="text" id="ic" name="ic" value="" ><br>
+    <label for="contact">Contact no.:</label>
+    <input type="text" id="contact" name="contact" value="" ><br>
+    <label for="hill">Hill/ Moutain name:</label>
+    <input type="text" id="hill" name="hill" value="" ><br>
+    <label for="date">Date to hike:</label>
+    <input type="date" id="date" name="date" value="" ><br>
+    <label for="other_name">Partcipant's names:</label><br>
+    <textarea rows="9" cols="70" id="other_name" name="other_name"></textarea><br>
+    <input type="submit" value="Submit">
+</form> -->
+
+<div class="container">
+  <div>
+    <h1>iHikerz</h1> 
+<h2>Permit Application</h2>
+    <form (ngSubmit)="onSubmit()" >
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name"
+               required
+               [(ngModel)]="model.name" name="name"
+               #name="ngModel">
+      </div>
+
+      <div class="form-group">
+        <label for="ic">IC/Passport No.</label>
+        <input type="text" class="form-control" id="ic"
+               [(ngModel)]="model.ic" name="ic">
+      </div>
+
+      <div class="form-group">
+        <label for="contact">Contact No.</label>
+        <input type="text" class="form-control" id="contact"
+               [(ngModel)]="model.contact" name="contact">
+      </div>
+
+      <div class="form-group">
+        <label for="hillName">Hill Name</label>
+        <select class="form-control" id="hillName"
+                required
+                [(ngModel)]="model.hillName" name="hillName"
+                #hillName="ngModel">
+          <option *ngFor="let hill of hills" [value]="hill">{{hill}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="dateHike">Date</label>
+        <input type="date" class="form-control" id="dateHike"
+               [(ngModel)]="model.dateHike" name="dateHike">
+      </div>
+
+
+      <button type="submit" class="btn btn-success">Submit</button>
+
+    </form>
+  </div>
+
+  <style>
+    th {
+      background-color: #ccc;
+    }
+    td {
+      padding: 2px;
+      border: 1px solid #ccc;
+    }
+  </style>
+
+  <table *ngIf="hikers.length > 0">
+    <tr>
+      <th>Name</th>
+      <th>Contact</th>
+      <th>Hill</th>
+      <th>Permit date</th>
+      <th>Status</th>
+    </tr>
+    <tr  *ngFor="let hiker of hikers">
+      <td>{{ hiker.name }}</td>
+      <td>{{ hiker.contactNo }}</td>
+      <td>{{ hiker.hillName }}</td>
+      <td>{{ hiker.date }}</td>
+      <td>{{ hiker.status }}</td>
+    </tr>
+  </table>
+
+  <!-- <div>
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">Name</div>
+      <div class="col-xs-9">{{ model.name }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Alter Ego</div>
+      <div class="col-xs-9">{{ model.alterEgo }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Power</div>
+      <div class="col-xs-9">{{ model.power }}</div>
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary" (click)="submitted=false">Edit</button>
+  </div> -->
+</div>
